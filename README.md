@@ -4,7 +4,7 @@ a chrome extension that turns websites grayscale and hides social engagement met
 
 ## features
 
-- **monochrome mode** - applies grayscale filter to any webpage
+- **grayscale mode** - applies grayscale filter to any webpage
 - **hide stats** - hides likes, views, subscribers, comment counts
 - **color areas** - select regions to keep in full color
   - **fixed** - stays at that position on the page (scrolls with content)
@@ -31,7 +31,7 @@ a chrome extension that turns websites grayscale and hides social engagement met
 ## usage
 
 1. click the extension icon
-2. toggle **monochrome** to enable/disable grayscale
+2. toggle **grayscale** to enable/disable grayscale
 3. toggle **hide stats** to show/hide engagement metrics
 4. click **+ fixed area** or **+ floating area** to select color regions
 5. manage areas with edit/delete buttons
