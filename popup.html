@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Monochrome It!</title>
+  <style>
+    body {
+      width: 300px;
+      padding: 15px;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f4f4f4;
+    }
+
+    h1 {
+      font-size: 16px;
+      margin-top: 0;
+      margin-bottom: 4px;
+      color: #333;
+    }
+
+    .page-indicator {
+      font-size: 10px;
+      color: #999;
+      margin-bottom: 10px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .control-group {
+      margin-bottom: 15px;
+      background: white;
+      padding: 10px;
+      border-radius: 8px;
+    }
+
+    .toggle-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+
+    .toggle-row:last-child {
+      margin-bottom: 0;
+    }
+
+    label {
+      font-size: 14px;
+      color: #555;
+    }
+
+    /* Toggle Switch */
+    .switch {
+      position: relative;
+      display: inline-block;
+      width: 34px;
+      height: 20px;
+    }
+
+    .switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #ccc;
+      transition: .4s;
+      border-radius: 34px;
+    }
+
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 14px;
+      width: 14px;
+      left: 3px;
+      bottom: 3px;
+      background-color: white;
+      transition: .4s;
+      border-radius: 50%;
+    }
+
+    input:checked+.slider {
+      background-color: #2196F3;
+    }
+
+    input:checked+.slider:before {
+      transform: translateX(14px);
+    }
+
+    button {
+      width: 100%;
+      padding: 8px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      background-color: #e0e0e0;
+      color: #333;
+      font-weight: 600;
+      margin-top: 5px;
+      transition: background 0.2s;
+    }
+
+    button:hover {
+      background-color: #d0d0d0;
+    }
+
+    button.primary {
+      background-color: #4CAF50;
+      color: white;
+    }
+
+    button.primary:hover {
+      background-color: #45a049;
+    }
+
+    button.danger {
+      background-color: #f44336;
+      color: white;
+    }
+
+    button.danger:hover {
+      background-color: #d32f2f;
+    }
+
+    button.small {
+      width: auto;
+      padding: 4px 8px;
+      font-size: 11px;
+      margin: 0;
+    }
+
+    /* Area List */
+    .area-list {
+      max-height: 180px;
+      overflow-y: auto;
+      margin-bottom: 10px;
+    }
+
+    .area-item {
+      display: flex;
+      flex-direction: column;
+      padding: 8px;
+      background: #f9f9f9;
+      border-radius: 4px;
+      margin-bottom: 6px;
+      font-size: 12px;
+    }
+
+    .area-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .area-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 6px;
+    }
+
+    .area-info {
+      flex: 1;
+      color: #555;
+      font-weight: 500;
+    }
+
+    .area-actions {
+      display: flex;
+      gap: 4px;
+    }
+
+    .area-type-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      color: #777;
+    }
+
+    .area-type-row select {
+      padding: 2px 4px;
+      border-radius: 3px;
+      border: 1px solid #ddd;
+      font-size: 11px;
+    }
+
+    .no-areas {
+      color: #999;
+      font-size: 12px;
+      text-align: center;
+      padding: 10px;
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 5px;
+    }
+
+    .btn-group button {
+      flex: 1;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Monochrome It!</h1>
+  <div id="page-indicator" class="page-indicator">Loading...</div>
+
+  <div class="control-group">
+    <div class="toggle-row">
+      <label for="mono-toggle">Monochrome</label>
+      <label class="switch">
+        <input type="checkbox" id="mono-toggle" checked>
+        <span class="slider"></span>
+      </label>
+    </div>
+    <div class="toggle-row">
+      <label for="hide-toggle">Hide Stats</label>
+      <label class="switch">
+        <input type="checkbox" id="hide-toggle" checked>
+        <span class="slider"></span>
+      </label>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <label style="display:block; margin-bottom:8px; font-weight:600;">Color Areas</label>
+    <div id="area-list" class="area-list">
+      <div class="no-areas">No color areas defined</div>
+    </div>
+    <div class="btn-group">
+      <button id="add-fixed-btn" class="primary">+ Fixed Area</button>
+      <button id="add-floating-btn" class="primary">+ Floating Area</button>
+    </div>
+    <button id="clear-areas-btn" class="danger">Clear All</button>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+
+</html>

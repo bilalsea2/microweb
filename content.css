@@ -1,0 +1,229 @@
+/* Overlay Styles */
+#monochrome-it-root {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 2147483647;
+    display: none;
+}
+
+#monochrome-it-selection-layer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 2147483647;
+    background: transparent;
+    cursor: crosshair;
+    display: none;
+}
+
+.mi-selection-box {
+    position: absolute;
+    border: 2px dashed #ffeb3b;
+    background-color: rgba(255, 235, 59, 0.2);
+    box-sizing: border-box;
+}
+
+.mi-overlay-full {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: grayscale(100%);
+    background: transparent;
+}
+
+.mi-overlay-part {
+    position: absolute;
+    backdrop-filter: grayscale(100%);
+    background: transparent;
+    pointer-events: none;
+}
+
+/* Multi-hole overlay using clip-path */
+.mi-overlay-full.mi-multi-hole {
+    clip-path: inherit;
+}
+
+/* Editing mode selection box */
+.mi-selection-box.mi-editing {
+    border-color: #2196F3;
+    background-color: rgba(33, 150, 243, 0.2);
+}
+
+/* =========================================
+   HIDING ENGAGEMENT METRICS - AGGRESSIVE
+   ========================================= */
+
+/* --- YouTube Shorts (REMOVE FROM FEED) --- */
+/* Hide the entire Shorts shelf/grid on homepage and recommended */
+.mi-hide-engagement ytd-rich-grid-slim-media,
+/* Individual Shorts cards */
+.mi-hide-engagement ytd-reel-shelf-renderer,
+/* "Shorts" shelf in subscriptions/feed */
+.mi-hide-engagement ytd-rich-shelf-renderer[is-shorts]
+
+/* "Shorts" section on homepage */
+    {
+    display: none !important;
+}
+
+/* Hide Shorts tab in sidebar if desired? User just said "from my feed". */
+.mi-hide-engagement ytd-guide-entry-renderer a[title="Shorts"],
+.mi-hide-engagement ytd-mini-guide-entry-renderer[aria-label="Shorts"] {
+    display: none !important;
+}
+
+
+/* --- YouTube Metadata (Views) --- */
+
+/* MODERN LAYOUT (2024/2025): yt-lockup-view-model in sidebar */
+/* Target ONLY the metadata container, NOT the title */
+.mi-hide-engagement yt-lockup-view-model yt-lockup-metadata-view-model yt-content-metadata-view-model span:first-of-type {
+    display: none !important;
+}
+
+/* CLASSIC LAYOUT: ytd-compact-video-renderer in sidebar */
+.mi-hide-engagement ytd-compact-video-renderer #metadata-line span:first-of-type,
+.mi-hide-engagement ytd-compact-video-renderer #metadata-line>span:nth-child(1) {
+    display: none !important;
+}
+
+/* HOMEPAGE GRID: General #metadata-line selectors */
+.mi-hide-engagement #metadata-line>.inline-metadata-item:first-of-type,
+.mi-hide-engagement #metadata-line>span.inline-metadata-item:nth-child(1),
+.mi-hide-engagement #metadata-line>span.ytd-video-meta-block:first-of-type,
+.mi-hide-engagement #metadata-line>yt-formatted-string:first-of-type,
+.mi-hide-engagement #metadata-line>span:nth-child(1) {
+    display: none !important;
+}
+
+/* Cleanup Separators */
+.mi-hide-engagement #metadata-line>.inline-metadata-item:nth-of-type(2)::before,
+.mi-hide-engagement #metadata-line>span:nth-of-type(2)::before {
+    content: "" !important;
+    display: none !important;
+}
+
+
+/* --- YouTube Main Video Page (Likes, Views, Subs) --- */
+
+/* 1. Main View Count */
+.mi-hide-engagement #info-container #info-text #count,
+.mi-hide-engagement #view-count,
+.mi-hide-engagement ytd-watch-metadata #description-inner #info span:first-child {
+    display: none !important;
+}
+
+/* 2. Subscriber Counts (Video Page + Channel Page) */
+.mi-hide-engagement #owner-sub-count,
+.mi-hide-engagement #subscriber-count,
+.mi-hide-engagement yt-formatted-string[id="subscriber-count"],
+.mi-hide-engagement #owner #subscriber-count,
+.mi-hide-engagement ytd-video-owner-renderer #subscriber-count,
+/* Channel Page Header - VERIFIED SELECTOR */
+.mi-hide-engagement #page-header yt-content-metadata-view-model span:nth-child(1),
+/* Also target the first span with "subscribers" text */
+.mi-hide-engagement yt-page-header-renderer yt-content-metadata-view-model span:first-of-type {
+    display: none !important;
+}
+
+/* 3. Comment Section */
+/* Hide commenter profile images */
+.mi-hide-engagement ytd-comment-view-model #author-thumbnail,
+.mi-hide-engagement ytd-comment-renderer #author-thumbnail {
+    display: none !important;
+}
+
+/* Hide comment like counts */
+.mi-hide-engagement ytd-comment-view-model #vote-count-middle,
+.mi-hide-engagement ytd-comment-renderer #vote-count-middle {
+    display: none !important;
+}
+
+/* Hide comment count number (e.g., "115 Comments" -> "Comments") */
+/* The comment count is typically in #count inside #title in the comments section */
+.mi-hide-engagement ytd-comments-header-renderer #count {
+    font-size: 0 !important;
+}
+
+.mi-hide-engagement ytd-comments-header-renderer #count::after {
+    content: "Comments";
+    font-size: 16px;
+    font-weight: 500;
+}
+
+/* 3. Like Button Text */
+.mi-hide-engagement like-button-view-model .yt-core-attributed-string,
+.mi-hide-engagement like-button-view-model .yt-spec-button-shape-next__button-text-content,
+.mi-hide-engagement ytd-toggle-button-renderer #text,
+.mi-hide-engagement ytd-segmented-like-dislike-button-renderer span[role="text"] {
+    display: none !important;
+    opacity: 0 !important;
+    font-size: 0 !important;
+}
+
+
+/* --- Twitch --- */
+
+/* Viewer Count */
+.mi-hide-engagement [data-test-selector="stream-view-count"],
+.mi-hide-engagement .tw-stat__value {
+    display: none !important;
+}
+
+/* Followers */
+.mi-hide-engagement [data-a-target="followers-count"],
+.mi-hide-engagement [data-test-selector="followers-count"] {
+    display: none !important;
+}
+
+
+/* --- X.com (Twitter) --- */
+
+/* Hide likes count */
+.mi-hide-engagement [data-testid="like"] [data-testid="app-text-transition-container"] {
+    display: none !important;
+}
+
+/* Hide retweet/repost count */
+.mi-hide-engagement [data-testid="retweet"] [data-testid="app-text-transition-container"] {
+    display: none !important;
+}
+
+/* Hide view count (analytics link) */
+.mi-hide-engagement a[href*="/analytics"] [data-testid="app-text-transition-container"],
+.mi-hide-engagement a[href*="/analytics"] span {
+    display: none !important;
+}
+
+/* Hide reply count */
+.mi-hide-engagement [data-testid="reply"] [data-testid="app-text-transition-container"] {
+    display: none !important;
+}
+
+/* NOTE: Bookmarks ([data-testid="bookmark"]) are NOT hidden - user wants to keep them visible */
+
+/* X.com: Only grayscale images and videos, not the whole page */
+/* This overrides the full-page grayscale for X.com */
+.mi-hide-engagement [data-testid="tweetPhoto"] img,
+.mi-hide-engagement [data-testid="videoComponent"] video,
+.mi-hide-engagement [data-testid="videoPlayer"] video,
+.mi-hide-engagement [data-testid="card.wrapper"] img,
+.mi-hide-engagement [data-testid="card.wrapper"] video {
+    filter: grayscale(100%) !important;
+}
+
+
+/* Generic / Catch-all using Aria Labels */
+.mi-hide-engagement :is(span, div, yt-formatted-string)[aria-label*="views"],
+.mi-hide-engagement :is(span, div, yt-formatted-string)[aria-label*="subscribers"],
+.mi-hide-engagement :is(span, div, yt-formatted-string)[aria-label*="likes"] {
+    visibility: hidden;
+}
