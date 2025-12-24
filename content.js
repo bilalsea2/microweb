@@ -1,12 +1,12 @@
 (function () {
     /* 
-       Monochrome It! Content Script
+       microweb Content Script
        Supports multiple color area selections with fixed/floating types
        Per-page area storage using URL as key
     */
 
     if (window.monochromeItListenerAttached) {
-        console.log("Monochrome It! - Script already running.");
+        console.log("microweb - Script already running.");
         return;
     }
     window.monochromeItListenerAttached = true;
@@ -32,7 +32,7 @@
     }
 
     function init() {
-        console.log("Monochrome It! - Starting for page:", pageKey);
+        console.log("microweb - Starting for page:", pageKey);
         createOverlays();
         loadSettings();
 

@@ -1,4 +1,4 @@
-# monochrome it!
+# microweb
 
 a chrome extension that turns websites grayscale and hides social engagement metrics.
 

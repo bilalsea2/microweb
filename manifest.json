@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
-  "name": "Monochrome It!",
+  "name": "microweb",
   "version": "1.0",
-  "description": "Turn websites monochrome and hide social engagement metrics.",
+  "description": "Turn websites grayscale and hide social engagement metrics.",
   "permissions": [
     "activeTab",
     "scripting",
