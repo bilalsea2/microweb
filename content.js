@@ -5,11 +5,11 @@
        Per-page area storage using URL as key
     */
 
-    if (window.monochromeItListenerAttached) {
+    if (window.microwebListenerAttached) {
         console.log("microweb - Script already running.");
         return;
     }
-    window.monochromeItListenerAttached = true;
+    window.microwebListenerAttached = true;
 
     // -- State --
     var isMonochrome = true;
@@ -76,14 +76,14 @@
     }
 
     function createOverlays() {
-        if (document.getElementById('monochrome-it-root')) return;
+        if (document.getElementById('microweb-root')) return;
 
         overlayContainer = document.createElement('div');
-        overlayContainer.id = 'monochrome-it-root';
+        overlayContainer.id = 'microweb-root';
         document.body.appendChild(overlayContainer);
 
         selectionLayer = document.createElement('div');
-        selectionLayer.id = 'monochrome-it-selection-layer';
+        selectionLayer.id = 'microweb-selection-layer';
         document.body.appendChild(selectionLayer);
 
         selectionLayer.addEventListener('mousedown', handleMouseDown);
@@ -96,9 +96,9 @@
     function updateState() {
         updateOverlay();
         if (isHidingEngagement) {
-            document.documentElement.classList.add('mi-hide-engagement');
+            document.documentElement.classList.add('mw-hide-engagement');
         } else {
-            document.documentElement.classList.remove('mi-hide-engagement');
+            document.documentElement.classList.remove('mw-hide-engagement');
         }
     }
 
@@ -121,7 +121,7 @@
 
         if (colorAreas.length === 0) {
             var full = document.createElement('div');
-            full.className = 'mi-overlay-full';
+            full.className = 'mw-overlay-full';
             overlayContainer.appendChild(full);
         } else if (colorAreas.length === 1) {
             createSingleAreaOverlay(colorAreas[0]);
@@ -177,9 +177,9 @@
             return r.y + r.height > 0 && r.y < vh && r.x + r.width > 0 && r.x < vw;
         });
 
-        if (rects.length === 0) {
+        if (colorAreas.length === 0) {
             var full = document.createElement('div');
-            full.className = 'mi-overlay-full';
+            full.className = 'mw-overlay-full';
             overlayContainer.appendChild(full);
             return;
         }
@@ -248,7 +248,7 @@
     function createPartialOverlay(left, top, width, height) {
         if (width <= 0 || height <= 0) return;
         var div = document.createElement('div');
-        div.className = 'mi-overlay-part';
+        div.className = 'mw-overlay-part';
         div.style.left = left + 'px';
         div.style.top = top + 'px';
         div.style.width = width + 'px';
@@ -291,7 +291,7 @@
 
         if (selectionBox) selectionBox.remove();
         selectionBox = document.createElement('div');
-        selectionBox.className = 'mi-selection-box mi-editing';
+        selectionBox.className = 'mw-selection-box mw-editing';
         selectionLayer.appendChild(selectionBox);
 
         var displayY = area.type === 'fixed' ? area.originalY - (window.scrollY || 0) : area.y;
@@ -352,7 +352,7 @@
 
         if (!selectionBox) {
             selectionBox = document.createElement('div');
-            selectionBox.className = 'mi-selection-box';
+            selectionBox.className = 'mw-selection-box';
             selectionLayer.appendChild(selectionBox);
         }
         updateSelectionBox(startX, startY, 0, 0);
