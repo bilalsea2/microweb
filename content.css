@@ -210,6 +210,42 @@
 
 
 
+/* --- LinkedIn --- */
+
+/* 1. Feed: Likes, Comments, Shares counts */
+.mw-hide-engagement .social-details-social-counts,
+.mw-hide-engagement .feed-shared-social-counts,
+.mw-hide-engagement .social-details-social-counts__item,
+.mw-hide-engagement .social-details-social-counts__social-items {
+    display: none !important;
+}
+
+/* 2. Feed: Impression/View counts */
+.mw-hide-engagement .feed-shared-update-v2__control-menu-container .feed-shared-update-v2__subtext span,
+.mw-hide-engagement .analytics-entry-point,
+.mw-hide-engagement .social-details-social-counts__item--right-aligned {
+    display: none !important;
+}
+
+/* 3. Profile: Followers and Connection counts */
+.mw-hide-engagement .text-body-small.inline.t-black--light span[class*="follower"],
+.mw-hide-engagement .top-card__connections,
+.mw-hide-engagement .pv-top-card--list-bullet li:last-child,
+.mw-hide-engagement .pvs-header__optional-link-text {
+    display: none !important;
+}
+
+/* 4. Article/Post View counts */
+.mw-hide-engagement .social-details-social-counts__reactions-count,
+.mw-hide-engagement .social-details-social-counts__comments,
+.mw-hide-engagement .social-details-social-counts__shares {
+    display: none !important;
+}
+
+/* Ensure the date/time remains visible - typically a dot or span in the metadata */
+/* No action needed unless date is accidentally caught by broad selectors */
+
+
 /* Generic / Catch-all using Aria Labels */
 .mw-hide-engagement :is(span, div, yt-formatted-string)[aria-label*="views"],
 .mw-hide-engagement :is(span, div, yt-formatted-string)[aria-label*="subscribers"],
