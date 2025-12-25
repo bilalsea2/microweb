@@ -19,7 +19,7 @@ a chrome extension that turns websites grayscale and hides social engagement met
 | youtube | views, likes, subs, comment counts | hides shorts from feed |
 | twitch | viewers, followers | - |
 | x.com | likes, reposts, views, replies | bookmarks not visible, full page grayscale |
-| linkedin | followers, connections, likes, impressions | - |
+| linkedin | followers, connections, likes, impressions | hides feed engagement and profile counts |
 
 ## install (dev)
 
