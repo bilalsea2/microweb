@@ -48,10 +48,12 @@
                 isMonochrome = request.settings.monochrome;
                 isHidingEngagement = request.settings.hideEngagement;
                 updateState();
+                sendResponse({ status: "ok" });
             } else if (request.action === "toggleSelectionMode") {
                 editingAreaId = null;
                 newAreaType = request.areaType || 'floating';
                 enterSelectionMode();
+                sendResponse({ status: "ok" });
             } else if (request.action === "resetArea") {
                 colorAreas = [];
                 saveAreas();
@@ -67,6 +69,7 @@
                 var area = colorAreas.find(function (a) { return a.id === request.areaId; });
                 if (area) newAreaType = area.type;
                 highlightAreaForEdit(request.areaId);
+                sendResponse({ status: "ok" });
             } else if (request.action === "toggleAreaType") {
                 toggleAreaType(request.areaId);
                 sendResponse({ areas: colorAreas, pageKey: pageKey });
