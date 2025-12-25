@@ -109,10 +109,8 @@
     function updateOverlay() {
         if (!overlayContainer) return;
 
-        // On X.com (Twitter), skip full-page overlay - only use CSS grayscale on media
-        var isTwitter = window.location.hostname.includes('x.com') || window.location.hostname.includes('twitter.com');
 
-        if (!isMonochrome || isTwitter) {
+        if (!isMonochrome) {
             overlayContainer.style.display = 'none';
             return;
         }

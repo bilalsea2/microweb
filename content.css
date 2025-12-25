@@ -208,17 +208,6 @@
     display: none !important;
 }
 
-/* NOTE: Bookmarks ([data-testid="bookmark"]) are NOT hidden - user wants to keep them visible */
-
-/* X.com: Only grayscale images and videos, not the whole page */
-/* This overrides the full-page grayscale for X.com */
-.mw-hide-engagement [data-testid="tweetPhoto"] img,
-.mw-hide-engagement [data-testid="videoComponent"] video,
-.mw-hide-engagement [data-testid="videoPlayer"] video,
-.mw-hide-engagement [data-testid="card.wrapper"] img,
-.mw-hide-engagement [data-testid="card.wrapper"] video {
-    filter: grayscale(100%) !important;
-}
 
 
 /* Generic / Catch-all using Aria Labels */
